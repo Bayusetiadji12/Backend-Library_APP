@@ -23,9 +23,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    nama: DataTypes.STRING,
+    nama: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         isEmail: {
           args: true,
@@ -35,10 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     password:{
       type: DataTypes.TEXT,
-      min: {
-        args: 8,
-        msg: "Password minimal 8 karakter",
-      },
+      allowNull: false,
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
